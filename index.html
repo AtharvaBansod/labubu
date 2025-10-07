@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healing in Progress 🦴✨</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 30px;
+      color: #333;
+      font-size: 2.2rem;
+      text-align: center;
+    }
+
+    .bone-container {
+      position: relative;
+      width: 300px;
+      height: 80px;
+      margin-top: 40px;
+      background: #e0e0e0;
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .bone-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #f8b500, #ffda77);
+      border-radius: 50px;
+      transition: width 2s ease-in-out;
+      box-shadow: 0 0 15px #ffcc00;
+    }
+
+    .bone-ends {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #e0e0e0;
+      border-radius: 50%;
+      top: 25px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    }
+    .left-end { left: -15px; }
+    .right-end { right: -15px; }
+
+    .loading-text {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .photo-collage {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      width: 90%;
+      max-width: 700px;
+    }
+
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      border: 4px solid white;
+    }
+
+    .photo:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Floating hearts and sparkles */
+    .floating {
+      position: absolute;
+      animation: float 6s infinite ease-in-out;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+      50% { transform: translateY(-40px) rotate(15deg); opacity: 1; }
+      100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+    }
+
+    .heart { color: #ff5e78; font-size: 1.5rem; }
+    .sparkle { color: #ffd700; font-size: 1.2rem; }
+
+  </style>
+</head>
+<body>
+
+  <h1>🦴 Healing in Progress 💪✨</h1>
+
+  <div class="bone-container">
+    <div class="bone-fill" id="boneFill"></div>
+    <div class="bone-ends left-end"></div>
+    <div class="bone-ends right-end"></div>
+  </div>
+
+  <p class="loading-text" id="loadingText">Bone Repair: 0% Complete</p>
+
+  <div class="photo-collage">
+    <!-- Replace these image URLs with your sister's pictures -->
+    <div class="photo"><img src="https://source.unsplash.com/random/201x201?smile" alt="Pic1"></div>
+    <div class="photo"><img src="https://source.unsplash.com/random/202x202?happy" alt="Pic2"></div>
+    <div class="photo"><img src="https://source.unsplash.com/random/203x203?friends" alt="Pic3"></div>
+    <div class="photo"><img src="https://source.unsplash.com/random/204x204?flowers" alt="Pic4"></div>
+    <div class="photo"><img src="https://source.unsplash.com/random/205x205?sunshine" alt="Pic5"></div>
+    <div class="photo"><img src="https://source.unsplash.com/random/206x206?smile" alt="Pic6"></div>
+  </div>
+
+  <!-- Floating hearts and sparkles -->
+  <div class="floating heart" style="left: 15%; top: 20%;">❤️</div>
+  <div class="floating sparkle" style="left: 70%; top: 30%;">✨</div>
+  <div class="floating heart" style="left: 45%; top: 10%;">💖</div>
+  <div class="floating sparkle" style="left: 80%; top: 60%;">🌸</div>
+  <div class="floating heart" style="left: 25%; top: 70%;">💗</div>
+
+  <script>
+    // Animate bone loading
+    let fill = document.getElementById("boneFill");
+    let text = document.getElementById("loadingText");
+    let progress = 0;
+
+    const loading = setInterval(() => {
+      progress += 2;
+      fill.style.width = progress + "%";
+      text.textContent = `Bone Repair: ${progress}% Complete`;
+      if (progress >= 100) {
+        clearInterval(loading);
+        text.textContent = "✨ Fully Healed! Ready to dance again! 💃🦴";
+        fill.style.boxShadow = "0 0 25px #ffcc00";
+      }
+    }, 100);
+  </script>
+
+</body>
+</html>
